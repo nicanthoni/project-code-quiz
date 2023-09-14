@@ -49,3 +49,12 @@ body {
     background: lightgrey;
     color: black;
 }
+
+.start-btn {
+    text-align: center;
+    cursor: pointer;
+}
+ .hide {
+    display: none;
+    /* remove from main container once start is clicked, add hide to 'start btn' once clicked */
+ }
