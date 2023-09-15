@@ -4,8 +4,6 @@
 // use document.queryselector to store the btn div (asign id to btn) as a variable = btn
 // create startQuiz function that is triggered by 'click' event lastener, attached to the button variable
 // startquiz() should hold a var = timeInterval, which is = setInterval(function ()
-//
-//
 // call startQuiz();
 
 var time = 100;
@@ -54,22 +52,50 @@ var questions = [
     },
 
 ]
-
 var startBtn = document.querySelector(".start-btn");
 var mainContainer = document.querySelector(".main-container");
+var timer = document.querySelector(".timer");
+var viewScores = document.querySelector('.view-scores');
 
+
+
+// function starts once start button is clicked - 
 function startQuiz () {
 mainContainer.classList.remove("hide");
 startBtn.classList.add("hide");
+// asign a random array from the questions object (1 question and corresponding answer options) into fields of main container (quiz)
+getRandomQuestion();
+
 }
 
-function startTimer () {};
+var lastIndex = -1; // Initialize with an index that won't match any valid index
 
-function renderQAs () {};
+function getRandomQuestion() {
+    var index;
+    do {
+        index = Math.floor(Math.random() * questions.length);
+    } while (index === lastIndex); // Keep generating until it's different from the last index
+    lastIndex = index; // Update the last index
+    return questions[index];
+}
 
 
 
+function startTimer () {
 
+};
+
+function renderQAs () {
+
+};
+
+function checkAnswers() {
+
+};
+
+function viewHighScores () {
+
+};
 
 
 

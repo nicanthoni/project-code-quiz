@@ -31,7 +31,7 @@ body {
     color: black;
     font-weight: 600;
 }
-.btn {
+.a-btn {
     background: white;
     color: black;
     font-weight: 500;
@@ -45,7 +45,7 @@ body {
     transition: all 0.2s;
 }
 
-.btn:hover{
+.a-btn:hover{
     background: lightgrey;
     color: black;
 }
@@ -53,6 +53,7 @@ body {
 .start-btn {
     text-align: center;
     cursor: pointer;
+    
 }
  .hide {
     display: none;
