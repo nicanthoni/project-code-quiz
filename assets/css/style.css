@@ -53,8 +53,11 @@ body {
 .start-btn {
     text-align: center;
     cursor: pointer;
-    
 }
+.view-scores {
+    cursor: pointer;
+}
+
  .hide {
     display: none;
     /* remove from main container once start is clicked, add hide to 'start btn' once clicked */
