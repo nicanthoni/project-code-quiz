@@ -1,15 +1,8 @@
-// PSUEDO CODE:
-// create variables / arrays / objects
-// create object that hold all the questions + possible answers
-// use document.queryselector to store the btn div (asign id to btn) as a variable = btn
-// create startQuiz function that is triggered by 'click' event lastener, attached to the button variable
-// startquiz() should hold a var = timeInterval, which is = setInterval(function ()
-// call startQuiz();
 
-var time = 100;
-var initials = '';
-var score = 0;
-var questions = [
+var time = 100; // to tick down with incorrect answers
+var initials = ''; // to log add the end with my score
+var score = 0; // final score
+var questions = [ // questions, choices, and correct answer
     {
         question: "This will be question 1",
         choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
@@ -62,6 +55,8 @@ var questions = [
     },
 
 ]
+
+
 var startBtn = document.querySelector(".start-btn");
 var mainContainer = document.querySelector(".main-container");
 var timer = document.querySelector(".timer");
@@ -70,26 +65,36 @@ var answerOptions = document.getElementsByClassName('.a-btn');
 var displayedQuestion = document.querySelector('#question');
 
 
-
 // function starts once start button is clicked - 
 function startQuiz() {
     mainContainer.classList.remove("hide");
     startBtn.classList.add("hide");
     // asign a random array from the questions object (1 question and corresponding answer options) into fields of main container (quiz)
-    getRandomQuestion();
+    getQuestion();
     // Assign corresponding question value from randomly selected array to the '.question' element using textContent
     // assign corresponding answer options from randomly selected array to the ".a-btn" element using textContent
-    // displayedQuestion.textContent = ques
+    displayedQuestion.textContent = questions[index].question;
 }
 
 
-//get random question
+// Getting all the questions, and index will display the first one
 let index = 0;
-function getRandomQuestion() {
+function getQuestion() {
     for (let i = 0; i < questions.length; i++) {
         console.log(i);
-       console.log(questions[i]);
-       console.log(questions[index].question);
+        console.log(questions[i]);
+        console.log(questions[index].question);
+    }
+}
+
+
+//  loop to get all the options/choices -> assign the event listener to each and check if the answer is correct and move to the next question with index++ to display 1 by 1
+let index = 0;
+function getChoices() {
+    for (let i = 0; i < questions.choices.length; i++) {
+        console.log(i);
+        console.log(questions[index].choices);
+        console.log(questions[index].answer);
     }
 }
 
