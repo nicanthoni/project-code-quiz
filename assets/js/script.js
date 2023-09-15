@@ -75,7 +75,8 @@ function startQuiz() {
     // assign corresponding answer options from randomly selected array to the ".a-btn" element using textContent
     displayedQuestion.textContent = questions[index].question;
     //display choices to a-btns
-
+    getChoices();
+    answerOptions.textContent
     // if eventlistener 'click' matches correct answer, 'score++' by 10 ELSE 'time --' by 10
     // increase display question and display choices index by 1 (++;)
     // repeat
@@ -86,34 +87,29 @@ function startQuiz() {
 let index = 0;
 function getQuestion() {
     for (let i = 0; i < questions.length; i++) {
-        console.log(i);
         console.log(questions[i]);
-        console.log(questions[index].question);
+        console.log(questions[i].question);
     }
 }
 
-
 //  loop to get all the options/choices -> assign the event listener to each and check if the answer is correct and move to the next question with index++ to display 1 by 1
-let index = 0;
 function getChoices() {
-    for (let i = 0; i < questions.choices.length; i++) {
-        console.log(i);
+    for (let i = 0; i < 4; i++) {
         console.log(questions[index].choices);
         console.log(questions[index].answer);
     }
 }
 
 
+function checkAnswers() { // event listener runs when answer btn clicked -> check if event.target === the questions.answer
+
+};
 
 function startTimer() {
 
 };
 
 function renderQAs() {
-
-};
-
-function checkAnswers() {
 
 };
 
@@ -131,8 +127,10 @@ function viewHighScores() {
 //    )
 // }
 
+
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
-answerOptions.addEventListener('click',); // listen for click of the answer options, and run the function that compares to the correct answer, if statement for what happens if matches correct answer or not
+
+answerOptions.addEventListener('click', ); // listen for click of the answer options, and run the function that compares to the correct answer, if statement for what happens if matches correct answer or not
 
 
 // startQuiz();
