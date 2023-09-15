@@ -85,20 +85,22 @@ function getQuestion() {
 function getChoices() {
     for (let i = 0; i < 4; i++) {
         console.log(questions[i].choices[i]);
-
         answerOptions[i].innerText = questions[currentQuestion].choices[i];
     }
 }
 
 
 function checkAnswers(event) { // event listener runs when answer btn clicked -> check if event.target === the questions.answer
-    if (event.target.value === questions.answer.value) {
+    if (event.target.innerText === questions[currentQuestion].answer) {
         currentQuestion++;
         score++;
-        getQuestion();
-        getChoices();
-    } else return;
-};
+    } else {
+        currentQuestion++;
+        time--;
+    };
+    getQuestion();
+    getChoices();
+}
 
 function startTimer() {
 };
@@ -109,6 +111,6 @@ function viewHighScores() {
 
 
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
-answerOptions.addEventListener('click', checkAnswers); // listen for click of the answer options, and run the function that compares to the correct answer, if statement for what happens if matches correct answer or not
+answerOptions.addEventListener('click', checkAnswers); // listen for click of the answer options, and run checkAnswers
 
-// startQuiz();
+startQuiz();
