@@ -80,7 +80,7 @@ let index = 0;
 function getQuestion() {
     for (let i = 0; i < questions.length; i++) {
         console.log(questions[i].question);
-        
+
         displayedQuestion.textContent = questions[index].question;
     }
 }
@@ -90,7 +90,7 @@ function getChoices() {
     for (let i = 0; i < 4; i++) {
         console.log(questions[i].choices[i]);
 
-        answerOptions[i].textContent = questions[i].answer;
+        answerOptions.textContent = questions[index].answer;
     }
 }
 
