@@ -56,16 +56,16 @@ var questions = [ // questions, choices, and correct answer
 
 ]
 
-
 var startBtn = document.querySelector(".start-btn");
 var mainContainer = document.querySelector(".main-container");
 var timer = document.querySelector(".timer");
 var viewScores = document.querySelector('.view-scores');
-var answerOptions = document.getElementsByClassName('.a-btn');
+var answerOptions = document.getElementsByClassName('.a-btn'); // array, since selecting ALL the options
 var displayedQuestion = document.querySelector('#question');
+var currentQuestion = 0; // to track current question, bc the 1st index of an array is 0, which is whats holding the questions.then increase it each time I get the next question by 1
 
 
-// function starts once start button is clicked - 
+// function starts once start button is clicked 
 function startQuiz() {
     mainContainer.classList.remove("hide");
     startBtn.classList.add("hide");
@@ -90,7 +90,7 @@ function getChoices() {
     for (let i = 0; i < 4; i++) {
         console.log(questions[i].choices[i]);
 
-        answerOptions.textContent = questions[index].answer;
+        answerOptions[i].textContent = questions[index].answer;
     }
 }
 
@@ -111,15 +111,6 @@ function startTimer() {
 function viewHighScores() {
 };
 
-
-// for (let i = 0; i < questions.length; i++) {
-//     var 'answer' //addeventlistener that stores which element the user clicks on as the 'answer'
-//    if (answer == questions[i].answer) {
-//         score++;
-//     } else (
-//         (time == time - 10) // doing this in the case of 10 total questions 
-//    )
-// }
 
 
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
