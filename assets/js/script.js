@@ -11,44 +11,54 @@ var initials = '';
 var score = 0;
 var questions = [
     {
-        question1: "This will be question 1?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer1: "b"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question2: "This will be question 2?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer2: "d"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question3: "This will be question 3?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer3: "d"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question4: "This will be question 4?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer4: "c"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question5: "This will be question 5?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer5: "a"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question6: "This will be question 6?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer6: "b"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question7: "This will be question 7?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer7: "a"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question8: "This will be question 8?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer8: "a"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question9: "This will be question 9?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer9: "c"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
     {
-        question10: "This will be question 10?\n(a) A1\n(b) A2\n(c) A3\n(d) A4",
-        answer10: "d"
+        question: "This will be a question",
+        choices: ['choice 1', 'choice 2', 'choice 3', 'choice 4'],
+        answer: "correct answer"
     },
 
 ]
@@ -75,15 +85,17 @@ displayedQuestion.textContent = ques
 
 //
 
-var lastIndex = -1; // Initialize with an index that won't match any valid index
+//get random question
 function getRandomQuestion() {
-    var index;
-    do {
-        index = Math.floor(Math.random() * questions.length);
-    } while (index === lastIndex); // Keep going until it's different from the last index
-    lastIndex = index; // Update the last index
-    return questions[index];
-}
+    for (let i = 0; i < questions.length; i++) {
+     console.log(questions[i].question1);
+       var index = Math.floor(Math.random() * questions.length);
+       if (index !== lastIndex) {
+          lastIndex = index;
+          return questions[index];
+       }
+    }
+ }
 
 
 
