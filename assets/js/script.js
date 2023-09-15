@@ -80,7 +80,7 @@ let index = 0;
 function getQuestion() {
     for (let i = 0; i < questions.length; i++) {
         console.log(questions[i].question);
-
+        
         displayedQuestion.textContent = questions[index].question;
     }
 }
