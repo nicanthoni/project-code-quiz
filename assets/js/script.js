@@ -74,6 +74,11 @@ function startQuiz() {
     // Assign corresponding question value from randomly selected array to the '.question' element using textContent
     // assign corresponding answer options from randomly selected array to the ".a-btn" element using textContent
     displayedQuestion.textContent = questions[index].question;
+    //display choices to a-btns
+
+    // if eventlistener 'click' matches correct answer, 'score++' by 10 ELSE 'time --' by 10
+    // increase display question and display choices index by 1 (++;)
+    // repeat
 }
 
 
