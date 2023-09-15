@@ -71,17 +71,12 @@ function startQuiz() {
     startBtn.classList.add("hide");
     // asign a random array from the questions object (1 question and corresponding answer options) into fields of main container (quiz)
     getQuestion();
-    // Assign corresponding question value from randomly selected array to the '.question' element using textContent
-    // assign corresponding answer options from randomly selected array to the ".a-btn" element using textContent
     displayedQuestion.textContent = questions[index].question;
-    //display choices to a-btns
     getChoices();
-    answerOptions.textContent
-    // if eventlistener 'click' matches correct answer, 'score++' by 10 ELSE 'time --' by 10
-    // increase display question and display choices index by 1 (++;)
+    answerOptions.textContent = questions[index].answer;
+    checkAnswers();
     // repeat
 }
-
 
 // Getting all the questions, and index will display the first one
 let index = 0;
@@ -101,20 +96,18 @@ function getChoices() {
 }
 
 
-function checkAnswers() { // event listener runs when answer btn clicked -> check if event.target === the questions.answer
+function checkAnswers(event) { // event listener runs when answer btn clicked -> check if event.target === the questions.answer
+    if (event.target.value === questions.answer.value) {
+        questions
+        // if eventlistener 'click' matches correct answer, 'score++' by 10 ELSE 'time --' by 10
+    }
 
 };
 
 function startTimer() {
-
-};
-
-function renderQAs() {
-
 };
 
 function viewHighScores() {
-
 };
 
 
@@ -129,8 +122,6 @@ function viewHighScores() {
 
 
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
-
-answerOptions.addEventListener('click', ); // listen for click of the answer options, and run the function that compares to the correct answer, if statement for what happens if matches correct answer or not
-
+answerOptions.addEventListener('click', checkAnswers); // listen for click of the answer options, and run the function that compares to the correct answer, if statement for what happens if matches correct answer or not
 
 // startQuiz();
