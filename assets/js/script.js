@@ -69,12 +69,9 @@ var displayedQuestion = document.querySelector('#question');
 function startQuiz() {
     mainContainer.classList.remove("hide");
     startBtn.classList.add("hide");
-    // asign a random array from the questions object (1 question and corresponding answer options) into fields of main container (quiz)
     getQuestion();
-    displayedQuestion.textContent = questions[index].question;
     getChoices();
-    answerOptions.textContent = questions[index].answer;
-    checkAnswers();
+    // checkAnswers();
     // repeat
 }
 
@@ -82,27 +79,31 @@ function startQuiz() {
 let index = 0;
 function getQuestion() {
     for (let i = 0; i < questions.length; i++) {
-        console.log(questions[i]);
         console.log(questions[i].question);
+        
+        displayedQuestion.textContent = questions[index].question;
     }
 }
 
 //  loop to get all the options/choices -> assign the event listener to each and check if the answer is correct and move to the next question with index++ to display 1 by 1
 function getChoices() {
     for (let i = 0; i < 4; i++) {
-        console.log(questions[index].choices);
-        console.log(questions[index].answer);
+        console.log(questions[i].choices[i]);
+
+        answerOptions[i].textContent = questions[i].answer;
     }
 }
 
 
-function checkAnswers(event) { // event listener runs when answer btn clicked -> check if event.target === the questions.answer
-    if (event.target.value === questions.answer.value) {
-        questions
-        // if eventlistener 'click' matches correct answer, 'score++' by 10 ELSE 'time --' by 10
-    }
+// function checkAnswers(event) { // event listener runs when answer btn clicked -> check if event.target === the questions.answer
+//     if (event.target.value === questions.answer.value) {
+//         index++;
+//         score++;
+//     } else {
 
-};
+//     }
+
+// };
 
 function startTimer() {
 };
@@ -122,6 +123,6 @@ function viewHighScores() {
 
 
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
-answerOptions.addEventListener('click', checkAnswers); // listen for click of the answer options, and run the function that compares to the correct answer, if statement for what happens if matches correct answer or not
+// answerOptions.addEventListener('click', checkAnswers); // listen for click of the answer options, and run the function that compares to the correct answer, if statement for what happens if matches correct answer or not
 
 // startQuiz();
