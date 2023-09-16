@@ -54,11 +54,8 @@ var questions = [ // questions, choices, and correct answer
     },
 
 ]
-var initialsAndScores = [
-    {
-      
-    }
-]
+
+var finalInitialsAndScores = [];
 
 var mainEl = document.querySelector('main');
 var startBtn = document.querySelector(".start-btn");
@@ -68,7 +65,6 @@ var viewScores = document.querySelector('.view-scores');
 var answerOptions = document.getElementsByClassName('a-btn'); // array, since selecting ALL the options
 var displayedQuestion = document.querySelector('#question');
 var currentQuestion = 0; // to track current question, bc the 1st index of an array is 0, which is whats holding the questions.then increase it each time I get the next question by 1
-
 
 function startQuiz() {
     mainContainer.classList.remove("hide");
@@ -81,7 +77,7 @@ function startQuiz() {
 
 let index = 0;
 function getQuestion() {
-    displayedQuestion.innerText = questions[currentQuestion].question; 
+    displayedQuestion.innerText = questions[currentQuestion].question;
 }
 
 function getChoices() {
@@ -90,7 +86,7 @@ function getChoices() {
     }
 }
 
-function checkAnswers(event) { 
+function checkAnswers(event) {
     console.log(event);
     if (event.target.innerText === questions[currentQuestion].answer) {
         score++;
@@ -100,8 +96,8 @@ function checkAnswers(event) {
         console.log(time);
     };
     currentQuestion++;
-    console.log('checkAnswers function ran');
-    if (currentQuestion === 10) { 
+    if (currentQuestion === 10) {
+        window.alert('Game over! Input your initials to save your score.');
         endGame();
     } else {
         getQuestion();
@@ -129,20 +125,32 @@ function endGame() {
     var sectionEl = document.createElement('section');
     var initialsHTML = `
 <h1>Initials</h1>
-<input type="text" id="">
-<button>Submit</button>
+<input type="text" id="initials">
+<button class="submit-btn">Submit</button>
 `
     // assigns entire block of html to html
     sectionEl.innerHTML = initialsHTML;
     sectionEl.classList.add('initials-Container');
     mainEl.appendChild(sectionEl);
+    var submitBtn = document.querySelector(".submit-btn");
+    submitBtn.addEventListener("click", setInitialsAndScore); // when submit button after game is clicked, run function
+    console.log("here is the final score: " + score);
 };
 
 function setScore() {
 };
 
-function setInitials() {
+function setInitialsAndScore() {
+    var initialsInput = document.getElementById("initials");
+    var initials = initialsInput.value;
+    var collectSandI = {
+        Score: score,
+        Initials: initials
+    };
+    console.log(collectSandI);
+finalInitialsAndScores.push(collectSandI);
 
 };
+
 
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
