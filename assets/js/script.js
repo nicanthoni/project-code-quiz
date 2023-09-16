@@ -1,6 +1,5 @@
 
 var time = 100; // to tick down with incorrect answers
-var initials = ''; // to log add the end with my score
 var score = 0; // final score
 var questions = [ // questions, choices, and correct answer
     {
@@ -55,73 +54,95 @@ var questions = [ // questions, choices, and correct answer
     },
 
 ]
+var initialsAndScores = [
+    {
+      
+    }
+]
 
+var mainEl = document.querySelector('main');
 var startBtn = document.querySelector(".start-btn");
 var mainContainer = document.querySelector(".main-container");
-var timer = document.querySelector(".timer");
+var timerEl = document.querySelector(".timer");
 var viewScores = document.querySelector('.view-scores');
 var answerOptions = document.getElementsByClassName('a-btn'); // array, since selecting ALL the options
 var displayedQuestion = document.querySelector('#question');
 var currentQuestion = 0; // to track current question, bc the 1st index of an array is 0, which is whats holding the questions.then increase it each time I get the next question by 1
 
-// function starts once start button is clicked 
+
 function startQuiz() {
     mainContainer.classList.remove("hide");
     startBtn.classList.add("hide");
     getQuestion();
     getChoices();
+    startTimer();
     addEventListenersToAnswerOptions();
-    checkAnswers();
-    // repeat
 }
 
-// Getting all the questions, and index will display the first one
 let index = 0;
 function getQuestion() {
-    displayedQuestion.innerText = questions[currentQuestion].question;
+    displayedQuestion.innerText = questions[currentQuestion].question; 
 }
 
-//  loop to get all the options/choices -> assign the event listener to each and check if the answer is correct and move to the next question with index++ to display 1 by 1
 function getChoices() {
     for (let i = 0; i < 4; i++) {
-        // console.log(questions[i].choices[i]);
         answerOptions[i].innerText = questions[currentQuestion].choices[i];
     }
 }
 
-function checkAnswers(event) { // event listener runs when answer btn clicked -> check if event.target === the questions.answer
+function checkAnswers(event) { 
+    console.log(event);
     if (event.target.innerText === questions[currentQuestion].answer) {
         score++;
+        console.log(score);
     } else {
         time--;
+        console.log(time);
     };
     currentQuestion++;
-    getQuestion();
-    getChoices();
     console.log('checkAnswers function ran');
-    if (currentQuestion === 9) { // for some reason once i set to 10, it won't hide!
-        mainContainer.classList.add("hide");
-        // then remove 'hide' from a container that shows the scores!
+    if (currentQuestion === 10) { 
+        endGame();
+    } else {
+        getQuestion();
+        getChoices();
     }
 }
 
-function addEventListenersToAnswerOptions() { // answerOptions is an HTML Collection, so cannot directly add event listeners using addEventListener. looping through the collection & add event listeners to each element within it.
+function addEventListenersToAnswerOptions() { // answerOptions is an HTML Collection, so cant directly add event listeners using addEventListener. looping through collection & adding event listeners to each element within it.
     for (let i = 0; i < answerOptions.length; i++) {
         answerOptions[i].addEventListener("click", checkAnswers);
     }
 }
 
-
-function generateScore() {
-
-};
-
 function startTimer() {
+    timerInterval = setInterval(function () {
+        time--;
+        timerEl.textContent = 'Time left: ' + time;
+    }, 1000);
+}
+
+function endGame() {
+    clearInterval(timerInterval);
+    mainContainer.classList.add("hide");
+    // scoreContainer.classList.remove("hide");
+    var sectionEl = document.createElement('section');
+    var initialsHTML = `
+<h1>Initials</h1>
+<input type="text" id="">
+<button>Submit</button>
+`
+    // assigns entire block of html to html
+    sectionEl.innerHTML = initialsHTML;
+    sectionEl.classList.add('initials-Container');
+    mainEl.appendChild(sectionEl);
 };
 
-function viewHighScores() {
+function setScore() {
 };
 
+function setInitials() {
 
+};
 
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
