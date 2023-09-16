@@ -137,20 +137,32 @@ function endGame() {
     console.log("here is the final score: " + score);
 };
 
-function setScore() {
-};
-
 function setInitialsAndScore() {
     var initialsInput = document.getElementById("initials");
-    var initials = initialsInput.value;
+    var initials = initialsInput.value.trim();
     var collectSandI = {
         Score: score,
         Initials: initials
     };
     console.log(collectSandI);
 finalInitialsAndScores.push(collectSandI);
-
+localStorage.setItem("userScore", JSON.stringify(collectSandI)); // store object locally
+showScore();
 };
 
+function showScore() {
+    sectionEl.classList.add('hide'); // hiding container for submitting initials
+    var scoreboardEl = document.createElement('section');
+    var scoreboardHTML = `
+    <h1 class= "scoreboard-Header">Scoreboard</h1>
+   <h2 class ="user-name"></h2>
+   <h2 class ="user-score"></h2>
+    <button class="play-Again-Btn">Play Again</button>
+    ` // add event listener? ^
+
+    scoreboardEl.innerHTML = scoreboardHTML;
+    scoreboardEl.classList.add('scoreboard-Container');
+    mainEl.appendChild(scoreboardEl);
+};
 
 startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
