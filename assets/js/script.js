@@ -137,10 +137,9 @@ function endGame() {
     mainEl.appendChild(sectionEl);
     var submitBtn = document.querySelector(".submit-btn");
     submitBtn.addEventListener("click", setInitialsAndScore); // when submit button after game is clicked, run function
-    console.log("here is the final score: " + score);
 };
 
-var collectSandI = null; // defined glocally so may be used in showScore();
+var collectSandI = null; // declaring glocally so may be used in showScore();
 function setInitialsAndScore() {
     var initialsInput = document.getElementById("initials");
     var initials = initialsInput.value.trim();
@@ -148,7 +147,6 @@ function setInitialsAndScore() {
         Score: score,
         Initials: initials
     };
-    console.log(collectSandI);
 localStorage.setItem("userScore", JSON.stringify(collectSandI)); // store object locally
 showScore();
 };
