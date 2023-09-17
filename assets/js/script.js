@@ -66,6 +66,8 @@ var answerOptions = document.getElementsByClassName('a-btn'); // array, since se
 var displayedQuestion = document.querySelector('#question');
 var currentQuestion = 0; // to track current question, bc the 1st index of an array is 0, which is whats holding the questions.then increase it each time I get the next question by 1
 
+
+
 function startQuiz() {
     mainContainer.classList.remove("hide");
     startBtn.classList.add("hide");
@@ -118,6 +120,7 @@ function startTimer() {
     }, 1000);
 }
 
+var sectionEl = null; // declaring at global level so accessible by mult functions
 function endGame() {
     clearInterval(timerInterval);
     mainContainer.classList.add("hide");
@@ -157,12 +160,14 @@ function showScore() {
     <h1 class= "scoreboard-Header">Scoreboard</h1>
    <h2 class ="user-name"></h2>
    <h2 class ="user-score"></h2>
-    <button class="play-Again-Btn">Play Again</button>
+    <button class="replay-btn">Play Again</button>
     ` // add event listener? ^
+    var replayBtn = document.querySelector(".replay-btn"); // Play again button 
 
     scoreboardEl.innerHTML = scoreboardHTML;
     scoreboardEl.classList.add('scoreboard-Container');
     mainEl.appendChild(scoreboardEl);
+   
 };
 
-startBtn.addEventListener("click", startQuiz); // starts quiz when start button is clicked
+startBtn.addEventListener("click", startQuiz); 
