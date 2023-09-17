@@ -140,10 +140,11 @@ function endGame() {
     console.log("here is the final score: " + score);
 };
 
+var collectSandI = null; // defined glocally so may be used in showScore();
 function setInitialsAndScore() {
     var initialsInput = document.getElementById("initials");
     var initials = initialsInput.value.trim();
-    var collectSandI = {
+    collectSandI = {
         Score: score,
         Initials: initials
     };
@@ -158,8 +159,8 @@ function showScore() {
     var scoreboardEl = document.createElement('section');
     var scoreboardHTML = `
     <h1 class= "scoreboard-Header">Scoreboard</h1>
-   <h2 class ="user-name"></h2>
-   <h2 class ="user-score"></h2>
+   <h3 class ="user-name"></h3>
+   <h3 class ="user-score"></h3>
     <button class="replay-btn">Play Again</button>
     ` 
     scoreboardEl.innerHTML = scoreboardHTML;
@@ -172,10 +173,10 @@ function showScore() {
     var scoreEl = document.querySelector('.user-score');
 
 console.log("Here is the globally accessible array: " + finalInitialsAndScores);
-    // initialsEl.innerText = 
+   initialsEl.innerText = ('Player Initials: ' + collectSandI.score);
     // scoreEl = 
 
-    var replayBtn = document.querySelector(".replay-btn"); // Add event listener? Play again button 
+    var replayBtn = document.querySelector(".replay-btn"); 
 };
 
 function getInitialsAndScore() { // function to GET intiials and score from local storage, to then be displayed to Scoreboard
