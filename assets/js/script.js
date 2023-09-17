@@ -125,7 +125,7 @@ function endGame() {
     clearInterval(timerInterval);
     mainContainer.classList.add("hide");
     // scoreContainer.classList.remove("hide");
-    var sectionEl = document.createElement('section');
+    sectionEl = document.createElement('section');
     var initialsHTML = `
 <h1>Initials</h1>
 <input type="text" id="initials">
@@ -161,13 +161,18 @@ function showScore() {
    <h2 class ="user-name"></h2>
    <h2 class ="user-score"></h2>
     <button class="replay-btn">Play Again</button>
-    ` // add event listener? ^
-    var replayBtn = document.querySelector(".replay-btn"); // Play again button 
-
+    ` 
     scoreboardEl.innerHTML = scoreboardHTML;
     scoreboardEl.classList.add('scoreboard-Container');
     mainEl.appendChild(scoreboardEl);
-   
+    //
+    //
+    var replayBtn = document.querySelector(".replay-btn"); // Add event listener? Play again button 
 };
+
+function getInitialsAndScore() { // function to GET intiials and score from local storage, to then be displayed to Scoreboard
+    var storedInitials = localStorage.getItem("userScore", JSON.parse);
+    console.log(storedInitials);
+}
 
 startBtn.addEventListener("click", startQuiz); 
