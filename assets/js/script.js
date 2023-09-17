@@ -184,3 +184,4 @@ function getInitialsAndScore() { // function to GET intiials and score from loca
 }
 
 startBtn.addEventListener("click", startQuiz); 
+replayBtn  // Do I need to define this globally first, to be able to use this hear?
