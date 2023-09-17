@@ -148,12 +148,12 @@ function setInitialsAndScore() {
         Initials: initials
     };
     console.log(collectSandI);
-finalInitialsAndScores.push(collectSandI);
 localStorage.setItem("userScore", JSON.stringify(collectSandI)); // store object locally
 showScore();
 };
 
 function showScore() {
+    getInitialsAndScore();
     sectionEl.classList.add('hide'); // hiding container for submitting initials
     var scoreboardEl = document.createElement('section');
     var scoreboardHTML = `
@@ -167,12 +167,22 @@ function showScore() {
     mainEl.appendChild(scoreboardEl);
     //
     //
+
+    var initialsEl = document.querySelector('.user-name'); // 
+    var scoreEl = document.querySelector('.user-score');
+
+console.log("Here is the globally accessible array: " + finalInitialsAndScores);
+    // initialsEl.innerText = 
+    // scoreEl = 
+
     var replayBtn = document.querySelector(".replay-btn"); // Add event listener? Play again button 
 };
 
 function getInitialsAndScore() { // function to GET intiials and score from local storage, to then be displayed to Scoreboard
     var storedInitials = localStorage.getItem("userScore", JSON.parse);
     console.log(storedInitials);
+    finalInitialsAndScores.push(storedInitials);
+    console.log("Pulled from local storage and pushed to empty global array: " + finalInitialsAndScores);
 }
 
 startBtn.addEventListener("click", startQuiz); 
