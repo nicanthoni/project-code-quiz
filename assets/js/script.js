@@ -1,4 +1,3 @@
-
 var time = 100; // to tick down with incorrect answers
 var score = 0; // final score
 var questions = [ // questions, choices, and correct answer
@@ -66,6 +65,14 @@ var answerOptions = document.getElementsByClassName('a-btn'); // array, since se
 var displayedQuestion = document.querySelector('#question');
 var currentQuestion = 0; // to track current question, bc the 1st index of an array is 0, which is whats holding the questions.then increase it each time I get the next question by 1
 
+viewScores.addEventListener('click', () => {
+    var leaderboardData = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    var leaderboardElements = leaderboardData.map((player) => {
+        return `<li>${player.Initials} - Score: ${player.Score}</li>`;
+    });
+    var leaderboardContainer = document.querySelector('.leaderboard');
+    leaderboardContainer.innerHTML = leaderboardElements.join('');
+});
 
 
 function startQuiz() {
@@ -147,8 +154,9 @@ function setInitialsAndScore() {
         Score: score,
         Initials: initials
     };
-localStorage.setItem("userScore", JSON.stringify(collectSandI)); // store object locally
-showScore();
+    
+    localStorage.setItem("current_user_score", JSON.stringify(collectSandI)); // store object locally
+    showScore();
 };
 
 function showScore() {
@@ -156,10 +164,10 @@ function showScore() {
     sectionEl.classList.add('hide'); // hiding container for submitting initials
     var scoreboardEl = document.createElement('section');
     var scoreboardHTML = `
-    <h1 class= "scoreboard-Header">Scoreboard</h1>
-   <h3 class ="user-name"></h3>
-   <h3 class ="user-score"></h3>
-    <button class="replay-btn">Play Again</button>
+        <h1 class= "scoreboard-Header">Scoreboard</h1>
+        <h3 class ="user-name"></h3>
+        <h3 class ="user-score"></h3>
+        <button class="replay-btn">Play Again</button>
     ` 
     scoreboardEl.innerHTML = scoreboardHTML;
     scoreboardEl.classList.add('scoreboard-Container');
@@ -167,21 +175,27 @@ function showScore() {
     //
     //
 
-    var initialsEl = document.querySelector('.user-name');  
+    var initialsEl = document.querySelector('.user-name');
     var scoreEl = document.querySelector('.user-score');
 
 console.log("Here is the globally accessible array: " + finalInitialsAndScores);
    initialsEl.innerText = ('Player Initials: ' + collectSandI.Initials);
    scoreEl.innerText = ('Score: ' + collectSandI.Score);
 
-    var replayBtn = document.querySelector(".replay-btn"); 
+    var replayBtn = document.querySelector(".replay-btn");
+    console.log(replayBtn)
+    replayBtn.addEventListener('click', () => {
+        location.reload();
+    });
 };
 
 function getInitialsAndScore() { // function to GET intiials and score from local storage, to then be displayed to Scoreboard
-    var storedInitials = localStorage.getItem("userScore", JSON.parse);
-    finalInitialsAndScores.push(storedInitials);
+    var currentUserScore = JSON.parse(localStorage.getItem("current_user_score"));
+    var leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    leaderboard.push(currentUserScore)
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+
     console.log("Pulled from local storage and pushed to empty global array: " + finalInitialsAndScores);
 }
 
 startBtn.addEventListener("click", startQuiz); 
-replayBtn  // Do I need to define this globally first, to be able to use this hear?
