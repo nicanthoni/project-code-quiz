@@ -1,4 +1,4 @@
-var time = 100; // to tick down with incorrect answers
+var time = 20; // to tick down with incorrect answers
 var score = 0; // final score
 var questions = [ // questions, choices, and correct answer
     {
@@ -65,6 +65,8 @@ var answerOptions = document.getElementsByClassName('a-btn'); // array, since se
 var displayedQuestion = document.querySelector('#question');
 var currentQuestion = 0; // to track current question, bc the 1st index of an array is 0, which is whats holding the questions.then increase it each time I get the next question by 1
 
+
+
 viewScores.addEventListener('click', () => {
     var leaderboardData = JSON.parse(localStorage.getItem('leaderboard')) || [];
     var leaderboardElements = leaderboardData.map((player) => {
@@ -72,12 +74,15 @@ viewScores.addEventListener('click', () => {
     });
     var leaderboardContainer = document.querySelector('.leaderboard');
     leaderboardContainer.innerHTML = leaderboardElements.join('');
+    leaderboardContainer.classList.remove("hide");
 });
 
 
 function startQuiz() {
     mainContainer.classList.remove("hide");
     startBtn.classList.add("hide");
+    timerEl.classList.remove("hide");
+
     getQuestion();
     getChoices();
     startTimer();
@@ -99,15 +104,13 @@ function checkAnswers(event) {
     console.log(event);
     if (event.target.innerText === questions[currentQuestion].answer) {
         score++;
-        console.log(score);
+        // event.target.style.background = green;
     } else {
         time--;
-        console.log(time);
     };
     currentQuestion++;
     if (currentQuestion === 10) {
-        window.alert('Game over! Input your initials to save your score.');
-        endGame();
+
     } else {
         getQuestion();
         getChoices();
@@ -124,6 +127,12 @@ function startTimer() {
     timerInterval = setInterval(function () {
         time--;
         timerEl.textContent = 'Time left: ' + time;
+        if (time < 0 || currentQuestion === 10) {
+            clearInterval(timerInterval);
+            window.alert('Game over! Input your initials to save your score.');
+            endGame();
+            timerEl.classList.add("hide");
+        }
     }, 1000);
 }
 
@@ -185,7 +194,7 @@ console.log("Here is the globally accessible array: " + finalInitialsAndScores);
     var replayBtn = document.querySelector(".replay-btn");
     console.log(replayBtn)
     replayBtn.addEventListener('click', () => {
-        location.reload();
+        location.reload(); // refreshes page
     });
 };
 
