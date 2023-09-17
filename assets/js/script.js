@@ -179,7 +179,6 @@ console.log("Here is the globally accessible array: " + finalInitialsAndScores);
 
 function getInitialsAndScore() { // function to GET intiials and score from local storage, to then be displayed to Scoreboard
     var storedInitials = localStorage.getItem("userScore", JSON.parse);
-    console.log(storedInitials);
     finalInitialsAndScores.push(storedInitials);
     console.log("Pulled from local storage and pushed to empty global array: " + finalInitialsAndScores);
 }
