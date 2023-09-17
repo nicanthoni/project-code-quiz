@@ -167,12 +167,12 @@ function showScore() {
     //
     //
 
-    var initialsEl = document.querySelector('.user-name'); // 
+    var initialsEl = document.querySelector('.user-name');  
     var scoreEl = document.querySelector('.user-score');
 
 console.log("Here is the globally accessible array: " + finalInitialsAndScores);
-   initialsEl.innerText = ('Player Initials: ' + collectSandI.score);
-    // scoreEl = 
+   initialsEl.innerText = ('Player Initials: ' + collectSandI.Initials);
+   scoreEl.innerText = ('Score: ' + collectSandI.Score);
 
     var replayBtn = document.querySelector(".replay-btn"); 
 };
