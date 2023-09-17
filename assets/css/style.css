@@ -123,5 +123,15 @@ body {
     border-radius: 5px;
     color: red;
  }
- .submit-btn {
- }
+ /* .view-scores {
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    color: green;
+ } */

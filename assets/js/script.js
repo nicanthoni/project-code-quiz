@@ -1,4 +1,4 @@
-var time = 20; // to tick down with incorrect answers
+var time = 21; // to tick down with incorrect answers
 var score = 0; // final score
 var questions = [ // questions, choices, and correct answer
     {
@@ -79,10 +79,11 @@ viewScores.addEventListener('click', () => {
 
 
 function startQuiz() {
+    
     mainContainer.classList.remove("hide");
     startBtn.classList.add("hide");
     timerEl.classList.remove("hide");
-
+    viewScores.classList.add("hide");
     getQuestion();
     getChoices();
     startTimer();
