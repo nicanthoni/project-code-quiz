@@ -65,14 +65,13 @@ var answerOptions = document.getElementsByClassName('a-btn'); // array, since se
 var displayedQuestion = document.querySelector('#question');
 var currentQuestion = 0; // to track current question, bc the 1st index of an array is 0, which is whats holding the questions.then increase it each time I get the next question by 1
 
-
+var leaderboardContainer = document.querySelector('.leaderboard');
 
 viewScores.addEventListener('click', () => {
     var leaderboardData = JSON.parse(localStorage.getItem('leaderboard')) || [];
     var leaderboardElements = leaderboardData.map((player) => {
         return `<li>${player.Initials} - Score: ${player.Score}</li>`;
     });
-    var leaderboardContainer = document.querySelector('.leaderboard');
     leaderboardContainer.innerHTML = leaderboardElements.join('');
     leaderboardContainer.classList.remove("hide");
 });
@@ -84,6 +83,7 @@ function startQuiz() {
     startBtn.classList.add("hide");
     timerEl.classList.remove("hide");
     viewScores.classList.add("hide");
+    leaderboardContainer.classList.add("hide")
     getQuestion();
     getChoices();
     startTimer();
