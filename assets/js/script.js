@@ -7,37 +7,37 @@ var questions = [ // questions, choices, and correct answer
         answer: 'D) Descriptive Object Model'
     },
     {
-        question: "In JavaDcript, which is an example of correctly 'calling' a function?",
+        question: "In JavaScript, which is an example of correctly 'calling' a function?",
         choices: ['A) exampleFunction();', 'B) Example Function();', 'C) exampleFunction[];', 'D) example = function();'],
         answer: 'A) exampleFunction();'
     },
     {
-        question: "This will be question 3",
+        question: "How is a variable declared in vanilla JavaScript?",
         choices: ['A) choice 1', 'B) choice 2', 'C) choice 3', 'D) None of the above'],
         answer: "choice 2"
     },
     {
-        question: "This will be question 4",
+        question: "What does 'HTML' stand for?",
         choices: ['A) choice 1', 'B) choice 2', 'C) choice 3', 'D) choice 4'],
         answer: "choice 4"
     },
     {
-        question: "This will be question 5",
+        question: "What is JQuery?",
         choices: ['A) choice 1', 'B) choice 2', 'C) choice 3', 'D) choice 4'],
         answer: "choice 3"
     },
     {
-        question: "This will be question 6",
+        question: "What is Bootstrap?",
         choices: ['A) choice 1', 'B) choice 2', 'C) choice 3', 'D) choice 4'],
         answer: "choice 4"
     },
     {
-        question: "This will be question 7",
+        question: "What is event bubbling?",
         choices: ['A) choice 1', 'B) choice 2', 'C) choice 3', 'D) choice 4'],
         answer: "choice 2"
     },
     {
-        question: "This will be question 8",
+        question: "How can you dynamically create an HTMLelement within JavaScript?",
         choices: ['A) choice 1', 'B) choice 2', 'C) choice 3', 'D) choice 4'],
         answer: "choice 1"
     },
@@ -76,6 +76,9 @@ viewScores.addEventListener('click', () => {
     leaderboardContainer.classList.remove("hide");
 });
 
+// function sortScores () {
+//  if ()
+// }
 
 function startQuiz() {
     
@@ -118,7 +121,7 @@ function checkAnswers(event) {
     }
 }
 
-function addEventListenersToAnswerOptions() { // answerOptions is an HTML Collection, so cant directly add event listeners using addEventListener. looping through collection & adding event listeners to each element within it.
+function addEventListenersToAnswerOptions() {
     for (let i = 0; i < answerOptions.length; i++) {
         answerOptions[i].addEventListener("click", checkAnswers);
     }
