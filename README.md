@@ -21,7 +21,7 @@ JavaScript, HTML, and CSS
 
 ## Deployed application link
 
-Deplyed application: 
+Deplyed application: https://nicanthoni.github.io/project-code-quiz/
 
 
 ## How to use?
